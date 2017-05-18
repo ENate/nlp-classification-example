@@ -18,7 +18,7 @@ def obtain_topic_tags(test_docs):
     Open the topic list file and import topic names
     taking care to strip the trailing "\n" from each word.
     """
-    os.chdir( "/home/nath/reutersInfo/reuters" )
+    os.chdir( "/home/pathtofile/reutersInfo/reuters" )
     cats_file = "cats.txt"
     topics = open(cats_file, 'r')
     lines = topics.readlines()
