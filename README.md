@@ -1,13 +1,16 @@
-# ClassifyPy
-A text mining/document classification example in python and tensorflow. The goal is to vectorize, transform and train a text documents to classify essential outcomes via supervised and unsupervised learning.
+# Text classification 
 
-The training data used is downloaded from different data sources (publicly available data sets). We begin with training data which are available in the sklearn (scikit-learn) and nltk packages.
+Text mining/document classification examples in python and tensorflow. The goal is to vectorize, transform and train a text documents to classify essential outcomes via supervised and unsupervised learning.
+
+The training data used is downloaded from different data sources (publicly available data sets). We begin with training data which are available in the ``` sklearn (scikit-learn) ``` and nltk packages.
+
+## Contents of the repository
 
 The repository consists of the following structure
 
-- misc_files - example of a text classification model implemented in Python and nltk packages.
+``` - misc_files:  ```  example of a text classification model implemented in Python and nltk packages.
 
-- text_mining_news - a tensorflow, python, scikit-learn, text classification example.
+``` - text_mining_news: ``` a tensorflow, python, scikit-learn, text classification example.
 
-Just run classify.py and suppy the data. Code can also be extended to similar applications.
+Just run ```classify.py``` and suppy the data. Code can also be extended to similar applications.
 

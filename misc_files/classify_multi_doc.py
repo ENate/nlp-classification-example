@@ -106,9 +106,8 @@ if __name__ == "__main__":
     #documents_train = [(func_lower(d), c) for (d,c) in documents_train]
     #docs = [(remove_slash(item_doc),c) for (item_doc,c) in documents_train]
     #documents_train = [(normalized_words(d), c) for (d,c) in docs]
-   
     # a list so that it can be printed out to the console
-    # Obtain the topic tags and filter docs through it 
+    # Obtain the topic tags and filter docs through it
     
     ref_docs,ref_docs_test = list_doc_topics(doc_test_topics,doc_train_topics)
     
@@ -126,8 +125,8 @@ if __name__ == "__main__":
     pred1 = classif.predict(X_test)     # test set
     pred = classif.predict(XtestVal)    # validation set
     # Scores for test and validation sets
-    print accuracy_score(y1, pred)
-    print accuracy_score(ytest, pred1)
+    print(accuracy_score(y1, pred))
+    print(accuracy_score(ytest, pred1))
     print(classif.score(XtestVal,y1))
     # Print precision, f-measure and other useful metrics
     print(classification_report(y1, pred))
@@ -147,7 +146,7 @@ ax = fig.add_subplot(111)
 res = ax.imshow(array(norm_conf), cmap=cm.jet, interpolation='nearest')    
 for i, ij in enumerate(conf_arr):
     for j, cj in enumerate(ij):
-        if cj>0:
+        if cj > 0:
             plt.text(j-.2, i+.2, cj, fontsize=14)
 cb = fig.colorbar(res)
 plt.show(cb)
