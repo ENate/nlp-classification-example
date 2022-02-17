@@ -8,9 +8,9 @@ The training data used is downloaded from different data sources (publicly avail
 
 The repository consists of the following structure
 
-``` - misc_files:  ```  example of a text classification model implemented in Python and nltk packages.
+``` - misc_files:  ```  Examples of text classification models implemented in Python and nltk packages.
 
-``` - text_mining_news: ``` a tensorflow, python, scikit-learn, text classification example.
+``` - text_mining_news: ``` Tensorflow, python, scikit-learn, text classification examples
 
-Just run ```classify.py``` and suppy the data. Code can also be extended to similar applications.
+To run:un ```python classify.py``` and supply the data assuming the environment has been properly configured.
 
