@@ -1,5 +1,5 @@
 tf-models-official==2.7.0
-tensorflow-text==2.8.
+tensorflow-text==2.8.1
 tensorflow==2.8.0
 scikit-learn==1.0.2
 pandas==1.2.1
