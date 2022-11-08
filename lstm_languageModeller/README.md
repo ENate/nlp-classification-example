@@ -1,7 +1,7 @@
-text_mining_news
+RNNs and LSTMs
 ==============================
 
-Text mining using supervised and unsupervised learning
+A reurrent neural networks differes from vanila artificial neural networks (ANNs)
 
 Project Organization
 ------------
@@ -50,7 +50,6 @@ Project Organization
     │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
 
 --------
 

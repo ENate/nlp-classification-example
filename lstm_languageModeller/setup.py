@@ -1,3 +1,4 @@
+"""setup file to find packages"""
 from setuptools import find_packages, setup
 
 setup(
