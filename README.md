@@ -1,4 +1,4 @@
-# Text classification
+# Introduction
 
 This repository contains foundational concepts, discussions and models implemented using neural networks, recurrent (RNNs), Long short term memory (LSTMs) and convolutional neural networks (CNNs) via deep learning architectures. The main objective is to explore the basics of RNNs, LSTMs and CNN with examples and identify key applications, where these architectures have been applied to solve problems. The examples presented in this repository are introductory -- given the fact that a vast literature exist on the theory and practical applications of RNNs, LSTMs and CNNs.
 
