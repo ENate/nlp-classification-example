@@ -1,6 +1,6 @@
 # Text classification
 
-This repository contains notes, discussions and models implemented using neural networks, recurrent (RNN), Long term short memory (LSTM) and convolutional neural networks (CNN) deep learning architectures. I explore the basics of RNNs, LSTMs and CNN with examples and identify key aspects, where these architectures have been applied to solve problems.
+This repository contains foundational concepts, discussions and models implemented using neural networks, recurrent (RNNs), Long short term memory (LSTMs) and convolutional neural networks (CNNs) via deep learning architectures. The main objective is to explore the basics of RNNs, LSTMs and CNN with examples and identify key applications, where these architectures have been applied to solve problems. The examples presented in this repository are basically introductory, given the fact that a vast literature exist on the theory and practical applications of RNNs, LSTMs and CNNs.
 
 ## Main Tech Stack
 
@@ -11,8 +11,7 @@ This repository contains notes, discussions and models implemented using neural 
 
 ### Main definitions
 
-We revisit neural networks and their application in solving various tasks.
- classification examples in python and tensorflow. The goal is to vectorize, transform and train a text documents to classify essential outcomes via supervised and unsupervised learning.
+We revisit vanilla neural networks and implement classification examples in python and tensorflow. The goal is to identify the limitation of neural networks in text mining, machine translation, sequence-sequence language and similar tasks. We discuss the  RNNs, LSTMs and CNNs architectures which are most suitable to the aformentioned tasks. To present an exampple, we transform and train examples of use cases where both RNNs and LSTMs are most suitable via supervised learning.
 
 The training data used is downloaded from different data sources (publicly available data sets). We begin with training data which are available in the ``` sklearn (scikit-learn) ``` and nltk packages.
 
@@ -20,11 +19,11 @@ The training data used is downloaded from different data sources (publicly avail
 
 The repository consists of the following structure
 
-```- misc_files:```  Examples of text classification models implemented in Python and nltk packages.
+```- misc_files:```  Examples of text classification models implemented in Python and other ML frameworks.
 
 ``` - lstm_cnn_trainer: ```
 
 This folder contains LSTM and CNN examples implemented using Tensorflow, python, scikit-learn, text classification examples
 
-To run:un ```python classify.py``` and supply the data assuming the environment has been properly configured.
+To run, clone the repository using  ```git clone <repo-name> ``` and supply the data assuming the environment has been properly configured.
 
