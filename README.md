@@ -25,5 +25,8 @@ The repository consists of the following structure
 
 This folder contains LSTM and CNN examples implemented using Tensorflow, python, scikit-learn, text classification examples
 
-To run, clone the repository using  ```git clone <repo-name> ``` and supply the data assuming the environment has been properly configured.
+To run, clone the repository using  `git clone <repo-name>` and supply the data assuming the environment has been properly configured.
+You will create two separate DB Session objects and use them knowingly in the code - whether same name or not, you will adapt the .env and the code accordingly
+you can even plug the same cli on multiple Astra organization ...try astra config list
+changing the code and providing different settings you can (you can create DB-specific and DB-generic tokens also)
 
