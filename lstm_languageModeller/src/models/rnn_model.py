@@ -14,7 +14,7 @@ def rnn_model(input_data, output_data):
     """
     pass
 
-class RNNs:
+class RNNs(rnn_model.MainModel):
     """ Defines a class for recurrent neural networks
     """
     

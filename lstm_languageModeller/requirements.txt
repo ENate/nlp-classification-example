@@ -13,3 +13,7 @@ tensorflow
 torch 
 torchvision 
 torchaudio
+scikit-learn
+pandas
+pytest
+numpy
