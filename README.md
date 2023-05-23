@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains the foundational concepts, discussions and models implemented using neural networks, recurrent (RNNs), Long short term memory (LSTMs) and convolutional neural networks (CNNs) using deep learning architectures. The main objective is to explore the basics of RNNs, LSTMs and CNN with examples and identify key applications where these architectures have been applied to solve problems. The examples presented in this repository are introductory given the fact that a vast literature exist on the theory and practical applications of RNNs, LSTMs and CNNs.
+This repository contains the foundational concepts, discussions and models implemented using neural networks, recurrent (RNNs), Long short term memory (LSTMs) and convolutional neural networks (CNNs) with emphasis on deep learning architectures. The main objective is to explore the basics of RNNs, LSTMs and CNN with examples and identify key applications where these architectures have been applied to solve problems. The examples presented in this repository are introductory given the fact that a vast literature exist on the theory and practical applications of RNNs, LSTMs and CNNs.
 
 ## Main Tech Stack
 
@@ -11,7 +11,7 @@ This repository contains the foundational concepts, discussions and models imple
 
 ### Main definitions
 
-We revisit vanilla neural networks and implement classification examples in python and tensorflow. The goal is to identify the limitation of neural networks in text mining, machine translation, sequence-sequence language and similar tasks. We discuss the  RNNs, LSTMs and CNNs architectures which are most suitable to the aformentioned tasks. To present an exampple, we transform and train examples of use cases where both RNNs and LSTMs are most suitable via supervised learning.
+We revisit classical neural networks and implement classification examples in python and tensorflow. The goal is to implement neural networks in text mining, machine translation, sequence-sequence language and similar examples. We discuss the  RNNs, LSTMs and CNNs architectures which are most suitable to the aformentioned tasks. To this end, we transform and train examples of use cases where both RNNs and LSTMs are most applicable via supervised learning.
 
 The training data used is downloaded from different data sources (publicly available data sets). We begin with training data which are available in the ``` sklearn (scikit-learn) ``` and nltk packages.
 
