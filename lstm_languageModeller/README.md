@@ -1,22 +1,9 @@
-## Introduction
+RNNs and LSTMs
+==============================
 
-We discuss recent advanceemnts in Natural Language Processing models using different supervised learning methods with emphasis on deep learning architectures. We begin with a brief review of the main components of Language modelling by introducing main terms and concepts, and discuss language modelling methods which existed before Bidirectional Encoder Representation Transformers (BERT). In the source folder of the repository, we include examples of models developed for basic text and document mining tasks. For instance, we train a Long Term Short Memory (LSTM) and Recurrent deep Neural Networks (RNNs). The goal is to gently introduce the rise of transformer models and their performance in language processing applications. To this end, we identify a few significant results which paved the way for BERT and mention fewer modifications which led to well known applications. Moreover, I also discuss model pre-training and fine-tuning which are vital in adaptive learning.
+A reurrent neural networks differes from vanila artificial neural networks (ANNs)
 
-To reproduce the examples discussed in this repository, the following Tech stack are required:
-
-#### Tech Stack
-- Python 3.10.+ (Anaconda for env management, pip etc)
-- Tensorflow
-- Pytorch
-- scikit-learn
-- pandas
-- matplotlib
-- transformers
-### Life before BERT
-We explore the use of LSTMs and RNNs for natural language processing problems. 
-
-### Life After BERT
-Project Structure
+Project Organization
 ------------
 
     ├── LICENSE
