@@ -25,10 +25,9 @@ def square(number: int | float) -> int | float:
 
 
 def get_set_delete(Teacher | TeacherSlots):
-    """ checking slots and unions"""
-    teacher.address = " 5 main street"
-    teacher.address
-    del teacher.address
+    """Checking slots and unions"""
+    Teacher.address = " 5 main street"
+    del Teacher.address
 
 
 def main():

@@ -8,6 +8,15 @@ class Customer:
         self.name = name
         self.age = age
         self.salary = salary
+    
+    def check_union(self) -> float:
+        """ computes the union of 2 variables
+
+        Returns:
+            float: returned from function computation
+        """
+        self.age = 23.4
+        return self.age
 
     # add str method
     def __str__(self) -> str:

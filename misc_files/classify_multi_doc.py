@@ -13,6 +13,7 @@ from numpy import*
 from pylab import*
 stop = stopwords.words("english")
 
+
 def obtain_topic_tags(test_docs):
     """
     Open the topic list file and import topic names
@@ -27,18 +28,24 @@ def obtain_topic_tags(test_docs):
     split_topics =[topix1.split()[1:] for topix1  in topics]
     train_topics = split_topics[len(test_docs):]
     return topics,train_topics
-#Normalized text and regex for non alphanumeric characters
+# Normalized text and regex for non alphanumeric characters
+
+
 def normalized_words(open_file):
     doc_text=[re.sub('[^A-Za-z0-9]+', '', item) for item in open_file]
     return doc_text
 # Convert all text in each document to lower case
+
+
 def func_lower(txt1):
     d_1=[item.lower() for item in txt1[0]]
     return d_1
 
+
 def remove_slash(txt0):
     item0=[item_doc.replace('\n','') for item_doc in txt0[0]]
     return  item0
+
 
 def list_doc_topics(doc_test_topics,doc_train_topics):
     """
@@ -54,7 +61,8 @@ def list_doc_topics(doc_test_topics,doc_train_topics):
         for t in t1:
             d_tup = (t, d0)
             ref_docs.append(d_tup)
-            
+
+
     for d in doc_test_topics:
         t2=d.split()[1:]
         d00 = rt0.raw(d.split()[0])
@@ -63,6 +71,7 @@ def list_doc_topics(doc_test_topics,doc_train_topics):
             d_tup = (t, d00)
             ref_docs_test.append(d_tup)
     return ref_docs,ref_docs_test
+
 
 def vectorise_training_test_data(docs,docs_test):
     """
@@ -130,7 +139,7 @@ if __name__ == "__main__":
     print(classif.score(XtestVal,y1))
     # Print precision, f-measure and other useful metrics
     print(classification_report(y1, pred))
-    #print the confusion matrix
+    # print the confusion matrix
     conf_arr = confusion_matrix(y1,pred)
     norm_conf = []
     for i in conf_arr:
@@ -140,7 +149,7 @@ if __name__ == "__main__":
         for j in i:
                 tmp_arr.append(float(j)/float(a))
         norm_conf.append(tmp_arr)
-#Plot the confusion matrix to analyze categories
+# Plot the confusion matrix to analyze categories
 fig = plt.figure()
 ax = fig.add_subplot(111)
 res = ax.imshow(array(norm_conf), cmap=cm.jet, interpolation='nearest')    

@@ -23,6 +23,7 @@ class Person:
     def __post_init__(self) -> str:
         """ prints name and age as search string"""
         self._search_string = f"{self.name}, {self.age}"
+        return self.name
 
 
 def main_method() -> None:
