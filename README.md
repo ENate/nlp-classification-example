@@ -36,7 +36,7 @@ you can even plug the same cli on multiple Astra organization
 try astra config list
 changing the code and providing different settings you can (you can create DB-specific and DB-generic tokens also).
 
-## Userful Resources
+## Useful Resources
 Recent advancements in Machine Learning and their applications to various NLP tasks have been characterized by a large ecosystem of tools and frameworks. We identify some of the most popular ones and also admit that it is nearly impossible to list them in their entirety. My personal preference are as follows
 
 ### Local and Remote Development
