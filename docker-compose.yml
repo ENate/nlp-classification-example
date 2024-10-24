@@ -50,7 +50,7 @@ x-airflow-common:
     # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
     # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
     # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.10.2}
-    build: ./airflow
+    build: ./docker/airflow
     environment:
         &airflow-common-env
         AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -77,6 +77,8 @@ x-airflow-common:
         - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
         - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
         - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+        - ${AIRFLOW_PROJ_DIR:-.}/data:/usr/local/airflow/data
+        - ${AIRFLOW_PROJ_DIR:-.}/models:/usr/local/airflow/models
     user: "${AIRFLOW_UID:-50000}:0"
     depends_on:
         &airflow-common-depends-on
@@ -322,10 +324,10 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
     mlflow:                                             # create a MLFlow container
-        build: './mlflow'                        # construct the container along the Dockerfile in this folder
+        build: './docker/mlflow'                        # construct the container along the Dockerfile in this folder
         container_name: mlflow
         ports:
             - "5000:5000"                               # expose port
-        command: 'mlflow server --backend-store-uri ./mlflow --host 0.0.0.0 --port 5000'
+        command: 'mlflow server --backend-store-uri ./docker/mlflow --host 0.0.0.0 --port 5000'
 volumes:
     postgres-airflow:
