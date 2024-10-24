@@ -59,7 +59,7 @@ x-airflow-common:
         AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
         AIRFLOW__CORE__FERNET_KEY: ''
         AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-        AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+        AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
         AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
         # yamllint disable rule:line-length
         # Use simple http server on scheduler for health checks
@@ -95,7 +95,7 @@ services:
             POSTGRES_PASSWORD: airflow
             POSTGRES_DB: airflow
         volumes:
-            - postgres-airflow:/var/lib/postgresql/data
+            - postgres-airflow0:/var/lib/postgresql/data
         healthcheck:
             test: ["CMD", "pg_isready", "-U", "airflow"]
             interval: 10s
@@ -330,4 +330,4 @@ services:
             - "5000:5000"                               # expose port
         command: 'mlflow server --backend-store-uri ./docker/mlflow --host 0.0.0.0 --port 5000'
 volumes:
-    postgres-airflow:
+    postgres-airflow0:

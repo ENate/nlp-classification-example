@@ -37,8 +37,6 @@ vscode:
     - bierner.markdown-preview-github-styles 
     - oderwat.indent-rainbow 
     - mongodb.mongodb-vscode 
-    - 2gua.rainbow-brackets 
-    - dzhavat.bracket-pair-toggler 
     - IBM.output-colorizer 
     - GitHub.vscode-pull-request-github 
     - cweijan.git-graph-history 
