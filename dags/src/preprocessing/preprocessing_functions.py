@@ -11,6 +11,7 @@ def preprocessing(**kwargs):
     test_set = loaded[1] # Once we have loaded the
     # new data we could do some preprocessing and
     # pass on the preprocessed variables
-	# Left this section open as no further preprocessing is required
+	# Left this section open as no further preprocessing 
+    # is required
     logging.info('preprocessed the data')
     return[new_samples, test_set]
