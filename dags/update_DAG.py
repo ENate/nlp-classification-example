@@ -26,8 +26,8 @@ EPOCHS = 4
 local_tz = pendulum.timezone("Europe/Amsterdam")
 
 with DAG(
+    "update_DAG",
     default_args = {
-        "update_DAG",
         'owner': 'airflow',
         # this in combination with catchup=False ensures the DAG being
         # triggered from the current date onwards along the set interval
