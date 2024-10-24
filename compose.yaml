@@ -1,0 +1,75 @@
+services:
+
+    postgres:                                           # create postgres container
+        image: postgres:14.0
+        container_name: postgres_container
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow
+
+    airflow:                                            # create airflow container
+        build: './docker/airflow'                       # construct the container along the Dockerfile in this folder
+        container_name: airflow_container
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            - LOAD_EX=n
+            - EXECUTOR=Local
+        volumes:                                        # mount the following local folders
+            - ./dags:/usr/local/airflow/dags
+            - ./data:/usr/local/airflow/data
+            - ./models:/usr/local/airflow/models
+        ports:
+            - "8280:8080"                               # expose port
+        command: webserver
+        healthcheck:
+            test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+            interval: 30s
+            timeout: 30s
+            retries: 3
+
+# ZOOKEEPER_CLIENT_PORT = 2181
+    zookeeper:
+        image: confluentinc/cp-zookeeper:7.3.2
+        hostname: zookeeper_container
+        container_name: zookeeper
+        ports:
+            - "2181:2181"
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_SERVER_ID: 1
+            ZOOKEEPER_SERVERS: zookeeper:2888:3888                              # expose port
+
+    kafka:                                              # create an instance of a Kafka broker in a container
+        image: confluentinc/cp-kafka:7.3.2
+        container_name: kafka_container
+        ports:
+            - "9092:9092"
+            - "29092:29092"
+            - "9999:9999"                             # expose port
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:19092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092,DOCKER://host.docker.internal:29092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+            KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+            KAFKA_BROKER_ID: 1
+            KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+            KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+            KAFKA_JMX_PORT: 9001
+            KAFKA_JMX_HOSTNAME: ${DOCKER_HOST_IP:-127.0.0.1}
+            KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+            KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+        depends_on:
+            - zookeeper
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+    mlflow:                                             # create a MLFlow container
+        build: './docker/mlflow'                        # construct the container along the Dockerfile in this folder
+        container_name: mlflow_container
+        ports:
+            - "5000:5000"                               # expose port
+        command: 'mlflow server --backend-store-uri ./docker/mlflow --host 0.0.0.0 --port 5000'

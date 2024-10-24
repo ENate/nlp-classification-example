@@ -47,6 +47,10 @@ Recent advancements in Machine Learning and their applications to various NLP ta
 - JAX and tools
 - Mention (SKLearn, Pandas, Numpy etc)
 
+### Implementation of airflow-mlflow-kafka example
+
+- See the [example](https://github.com/MBKraus/incremental_training/blob/master/data/stream_sample.p)
+
 
 
 

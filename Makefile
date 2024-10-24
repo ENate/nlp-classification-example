@@ -1,9 +1,9 @@
 airflow-init:
-	docker compose up airflow-init
+	docker-compose -f docker/docker-compose.yml up airflow-init
 start:
-	docker-compose up -d
+	docker-compose -f docker/docker-compose.yml up --remove-orphans -d
 stop:
-	docker compose down --volumes --remove-orphans
+	docker-compose -f docker-compose.yml down --volumes --remove-orphans
 logs-postgres:
 	docker compose logs postgres
 logs-redis:

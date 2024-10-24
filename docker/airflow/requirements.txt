@@ -1,0 +1,8 @@
+kafka-python-ng
+mlflow
+numpy
+pandas
+scikit-learn
+scipy
+tensorboard
+tensorflow
