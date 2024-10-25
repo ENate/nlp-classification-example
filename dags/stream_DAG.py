@@ -36,7 +36,7 @@ with DAG (
     
     task1 = ProduceToTopicOperator(
     task_id='generate_stream',
-    topic='your_topic',
+    topic='Topic A',
     producer_function=generate_stream,
     op_kwargs={'path_stream_sample': PATH_STREAM_SAMPLE}
 )
