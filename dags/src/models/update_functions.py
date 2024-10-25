@@ -96,13 +96,14 @@ def update_model(**kwargs):
 
         else:
 
-            logging.info(file_m + ' is not a model')
+            logging.info(file_m + '%s is not a model')
 
 
 def data_to_archive(**kwargs):
-
-    # store data that was used for updating the model in archive along date + time tag
-
+    """
+    store data that was used for updating the 
+    model in archive along date + time tag
+    """
     for file_d in os.listdir(os.getcwd()+kwargs['path_new_data']):
         if 'new_samples.p' in file_d:
 
