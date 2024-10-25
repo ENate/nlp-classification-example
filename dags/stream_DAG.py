@@ -5,7 +5,7 @@ from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 
 from src.data.kafka_producer import generate_stream
-
+from airflow.providers.apache.kafka.operators.produce import ProduceToTopicOperator
 PATH_STREAM_SAMPLE = "/data/stream_sample.p"
 local_tz = pendulum.timezone("Europe/Amsterdam")
 with DAG (
@@ -27,9 +27,16 @@ with DAG (
         # the start_date and the current date that haven't been run thus far
         catchup=False,
 ) as dag:
-    task1 = PythonOperator(
-        task_id='generate_stream',
-        python_callable=generate_stream,        # function to be executed
-        op_kwargs={'path_stream_sample': PATH_STREAM_SAMPLE},        # input arguments
-        # dag=dag,
-        )
+    #task1 = PythonOperator(
+    #    task_id='generate_stream',
+    #    python_callable=generate_stream,        # function to be executed
+    #    op_kwargs={'path_stream_sample': PATH_STREAM_SAMPLE},        # input arguments
+    #    # dag=dag,
+    #    )
+    
+    task1 = ProduceToTopicOperator(
+    task_id='generate_stream',
+    topic='your_topic',
+    producer_function=generate_stream,
+    op_kwargs={'path_stream_sample': PATH_STREAM_SAMPLE}
+)

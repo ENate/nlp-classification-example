@@ -8,16 +8,18 @@ from json import dumps
 
 
 def encode_to_json(x_train, y_train):
+    """Create data dumps."""
     x = dumps(x_train.tolist())
     y = dumps(y_train.tolist())
     jsons_comb = [x, y]
 
     return jsons_comb
 
-def generate_stream(**kwargs):
 
+def generate_stream(**kwargs):
+    """Generate useful stream."""
     producer = KafkaProducer(bootstrap_servers=['kafka:9092'],                              # set up Producer
-                         value_serializer=lambda x: dumps(x).encode('utf-8'))
+        value_serializer=lambda x: dumps(x).encode('utf-8'))
 
     stream_sample = pickle.load(open(os.getcwd() + kwargs['path_stream_sample'], "rb"))       # load stream sample file
 
@@ -26,7 +28,7 @@ def generate_stream(**kwargs):
     x_new = stream_sample[0]
     y_new = stream_sample[1]
 
-    logging.info('Partitions: ', producer.partitions_for('TopicA'))
+    logging.info('Partitions: %s', producer.partitions_for('TopicA'))
 
     for i in rand:
         json_comb = encode_to_json(x_new[i], y_new[i])                                         # pick observation and encode to JSON

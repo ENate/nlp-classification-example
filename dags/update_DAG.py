@@ -7,7 +7,7 @@ from airflow.operators.python import PythonOperator
 from src.data.data_functions import get_data_from_kafka, load_data
 from src.models.update_functions import load_current_model, update_model, data_to_archive
 from src.preprocessing.preprocessing_functions import preprocessing
-
+from airflow.providers.apache.kafka.operators.consume import ConsumeFromTopicOperator
 CLIENT = 'kafka:9092'
 TOPIC = 'TopicA'
 
@@ -41,16 +41,24 @@ with DAG(
     # indicate whether or not Airflow should do any runs for intervals between the start_date
 	catchup=False, #  and the current date that haven't been run thus far
 ) as dag:
-    task1 = PythonOperator(
+    #task1 = PythonOperator(
+    #    task_id='get_data_from_kafka',
+    #    # function called to get data from the Kafka topic and store
+    #    python_callable=get_data_from_kafka,            #  it
+    #    op_kwargs={'path_new_data': PATH_NEW_DATA,
+    #        'client': CLIENT,
+    #        'topic': TOPIC},
+    # dag=dag,
+    #)
+    task1 = ConsumeFromTopicOperator(
         task_id='get_data_from_kafka',
-        # function called to get data from the Kafka topic and store
-        python_callable=get_data_from_kafka,            #  it
+        topics=TOPIC,
+        apply_function=get_data_from_kafka,
         op_kwargs={'path_new_data': PATH_NEW_DATA,
             'client': CLIENT,
             'topic': TOPIC},
-    # dag=dag,
     )
-
+    
     task2 = PythonOperator(
         task_id='load_data',
         python_callable=load_data,                      # function called to load data for further processing

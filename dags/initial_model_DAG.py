@@ -1,7 +1,6 @@
 """Defines initial DAG."""
 import os
 import pendulum
-import airflow
 from airflow.models import DAG
 import sys
 from airflow.operators.python import PythonOperator

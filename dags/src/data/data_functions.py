@@ -1,3 +1,8 @@
+import os
+import time
+import logging
+import pickle
+import numpy as np
 from json import loads
 from kafka import KafkaConsumer, TopicPartition
 
@@ -35,7 +40,7 @@ def get_data_from_kafka(**kwargs):
 
         for message in consumer:                            # loop over messages
 
-            logging.info( "Offset: ", message.offset)
+            logging.info( "Offset: %s", message.offset)
             message = message.value
             x, y = decode_json(message)            # decode JSON
 
@@ -44,7 +49,9 @@ def get_data_from_kafka(**kwargs):
 
             logging.info('Image retrieved from topic')
 
-        xs = np.array(xs).reshape(-1, 28, 28, 1)            # put Xs in the right shape for our CNN
+        # xs = np.array(xs).reshape(-1, 28, 28, 1)  
+        # # put Xs in the right shape for our CNN
+        xs = np.expand_dims(np.array(xs), -1)
         ys = np.array(ys).reshape(-1)                       # put ys in the right shape for our CNN
 
         new_samples = [xs, ys]
