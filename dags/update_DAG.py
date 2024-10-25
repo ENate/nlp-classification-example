@@ -1,5 +1,4 @@
 """The update DAG."""
-import airflow
 import pendulum
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
