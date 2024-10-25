@@ -1,4 +1,5 @@
 import keras
+from keras import models
 # from keras import models # import Sequential, load_model
 import os
 import time
@@ -8,7 +9,7 @@ import mlflow.keras
 
 def load_current_model(model_path, file_m):
     """Load and process current model."""
-    model = load_model(os.getcwd()+model_path + str(file_m))
+    model = models.load_model(os.getcwd()+model_path + str(file_m))
     model.compile(loss=keras.losses.categorical_crossentropy,
                   optimizer=keras.optimizers.Adadelta(),
                   metrics=['accuracy'])
