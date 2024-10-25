@@ -1,6 +1,5 @@
 """Streams of data injestion from kafka topics"""
 import pendulum
-import airflow
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 
