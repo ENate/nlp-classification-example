@@ -64,8 +64,7 @@ with DAG(
         # function called to load data for further processing
         op_kwargs={'path_new_data': PATH_NEW_DATA,
             'path_test_set': PATH_TEST_SET},
-        python_callable=load_data,                 
-        # dag=dag,
+        python_callable=load_data
     )
 
     task3 = PythonOperator(
