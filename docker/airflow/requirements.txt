@@ -6,3 +6,6 @@ scikit-learn
 scipy
 tensorboard
 tensorflow
+confluent-kafka
+asgiref
+apache-airflow-providers-apache-kafka

@@ -1,9 +1,11 @@
 airflow-init:
-	docker-compose -f docker/docker-compose.yml up airflow-init
+	sh echo -e "AIRFLOW_UID=$(id -u)" > .env
+	docker compose up airflow-init
+	docker compose down --volumes --remove-orphans 
 start:
-	docker-compose -f docker/docker-compose.yml up --remove-orphans -d
+	docker compose up --remove-orphans -d
 stop:
-	docker-compose -f docker-compose.yml down --volumes --remove-orphans
+	docker compose down --volumes --remove-orphans
 logs-postgres:
 	docker compose logs postgres
 logs-redis:
