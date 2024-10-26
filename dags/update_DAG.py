@@ -2,11 +2,13 @@
 import pendulum
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
+from airflow.providers.apache.kafka.operators.consume import ConsumeFromTopicOperator
 
 from src.data.data_functions import get_data_from_kafka, load_data
-from src.models.update_functions import load_current_model, update_model, data_to_archive
+from src.models.update_functions import update_model, data_to_archive
 from src.preprocessing.preprocessing_functions import preprocessing
-from airflow.providers.apache.kafka.operators.consume import ConsumeFromTopicOperator
+
+
 CLIENT = 'kafka:9092'
 TOPIC = 'TopicA'
 
@@ -57,12 +59,12 @@ with DAG(
             'client': CLIENT,
             'topic': TOPIC},
     )
-    
     task2 = PythonOperator(
         task_id='load_data',
-        python_callable=load_data,                      # function called to load data for further processing
+        # function called to load data for further processing
         op_kwargs={'path_new_data': PATH_NEW_DATA,
             'path_test_set': PATH_TEST_SET},
+        python_callable=load_data,                 
         # dag=dag,
     )
 
@@ -87,7 +89,8 @@ with DAG(
 
     task5 = PythonOperator(
         task_id='data_to_archive',
-        python_callable=data_to_archive,             # function called to archive data used for updating the model
+        # function called to archive data used for updating the model
+        python_callable=data_to_archive,
         op_kwargs = {'path_new_data': PATH_NEW_DATA,
                 'path_used_data': PATH_USED_DATA,
                 },
