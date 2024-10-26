@@ -53,7 +53,7 @@ with DAG(
         task_id='get_data_from_kafka',
         topics=TOPIC,
         apply_function=get_data_from_kafka,
-        op_kwargs={'path_new_data': PATH_NEW_DATA,
+        apply_function_batch={'path_new_data': PATH_NEW_DATA,
             'client': CLIENT,
             'topic': TOPIC},
     )
