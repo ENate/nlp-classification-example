@@ -1,13 +1,13 @@
 """Defines initial DAG."""
+import sys
 import os
 import pendulum
 from airflow.models import DAG
-import sys
 from airflow.operators.python import PythonOperator
+from src.models.initial_model_functions import load_preprocess, fit_model
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
-from src.models.initial_model_functions import load_preprocess, fit_model
 
 
 PATH_STREAM_SAMPLE = "/data/stream_sample.p"
@@ -30,7 +30,6 @@ with DAG (
     # this is set to True as we want to pass variables on
     # from one task to another
     'provide_context': True,
-    
     # dag_id='initial_model_DAG',
     # default_args=args,
     # set interval
