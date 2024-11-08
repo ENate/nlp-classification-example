@@ -73,7 +73,7 @@ def update_model(**kwargs):
                     mlflow.set_tag('status', 'the model from this run did not replace the current version ')
         else:
 
-            logging.info(file_m + '%s is not a model')
+            logging.info(file_m, '%s is not a model')
 
 def data_to_archive(**kwargs):
     """
