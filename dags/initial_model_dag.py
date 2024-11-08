@@ -1,13 +1,8 @@
 """Defines initial DAG."""
-import sys
-import os
 import pendulum
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 from src.models.initial_model_functions import load_preprocess, fit_model
-
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 
 PATH_STREAM_SAMPLE = "/data/stream_sample.p"
@@ -56,4 +51,4 @@ with DAG (
 			'num_classes': NUM_CLASSES,
             'initial_model_path': INITIAL_MODEL_PATH},
     )
-    task1 >> task2                  # set task priority
+task1 >> task2                  # set task priority
