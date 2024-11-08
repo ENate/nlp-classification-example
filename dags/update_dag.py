@@ -42,15 +42,6 @@ with DAG(
     # indicate whether or not Airflow should do any runs for intervals between the start_date
 	catchup=False, #  and the current date that haven't been run thus far
 ) as dag:
-    #task1 = PythonOperator(
-    #    task_id='get_data_from_kafka',
-    #    # function called to get data from the Kafka topic and store
-    #    python_callable=get_data_from_kafka,            #  it
-    #    op_kwargs={'path_new_data': PATH_NEW_DATA,
-    #        'client': CLIENT,
-    #        'topic': TOPIC},
-    # dag=dag,
-    #)
     task1 = ConsumeFromTopicOperator(
         task_id='get_data_from_kafka',
         topics=TOPIC,
